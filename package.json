@@ -1,0 +1,15 @@
+{
+  "name": "torrent-feed",
+  "version": "0.0.0",
+  "description": "Publish a feed of torrents for automatic downloading",
+  "main": "index.js",
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "node-uuid": "^1.4.3",
+    "rss": "^1.2.0",
+    "sqlite3": "^3.1.1"
+  }
+}
