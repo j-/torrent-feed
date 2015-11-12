@@ -50,7 +50,7 @@ app.get('/feed/:output.rss', (req, res) => {
 		var xml = feed.xml({
 			indent: '\t',
 		});
-		res.type('text/xml');
+		res.type('application/xml');
 		res.send(xml);
 	});
 });
