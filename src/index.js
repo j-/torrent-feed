@@ -27,9 +27,11 @@ app.get('/feed/:output.rss', (req, res) => {
 	});
 
 	database.getAll(output).then((entries) => {
+		var date;
 		for (var entry of entries) {
+			date = new Date(entry.created_date).toISOString();
 			feed.item({
-				title: entry.entry_id,
+				title: `${date} (${entry.entry_id})`,
 				author: 'torrent-feed',
 				url: `${HOST}/guid/${entry.entry_id}`,
 				date: entry.created_date,
