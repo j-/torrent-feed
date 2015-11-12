@@ -45,7 +45,10 @@ app.get('/feed/:output.rss', (req, res) => {
 			});
 		}
 
-		var xml = feed.xml();
+		var xml = feed.xml({
+			indent: '\t',
+		});
+		res.type('application/rss+xml');
 		res.send(xml);
 	});
 });
