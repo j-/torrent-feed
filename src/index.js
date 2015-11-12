@@ -48,7 +48,7 @@ app.get('/feed/:output.rss', (req, res) => {
 		var xml = feed.xml({
 			indent: '\t',
 		});
-		res.type('application/rss+xml');
+		res.type('text/xml');
 		res.send(xml);
 	});
 });
