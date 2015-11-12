@@ -23,6 +23,7 @@ app.get('/feed/:output.rss', (req, res) => {
 		description: 'Feed of torrents',
 		site_url: `${HOST}/`,
 		feed_url: `${HOST}/feed/${output}.rss`,
+		generator: `${HOST}/`,
 	});
 
 	database.getAll(output).then((entries) => {
