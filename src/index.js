@@ -21,6 +21,7 @@ app.get('/feed/:output.rss', (req, res) => {
 	var feed = new RSS({
 		title: 'torrent-feed',
 		description: 'Feed of torrents',
+		site_url: `${HOST}/`,
 		feed_url: `${HOST}/feed/${output}.rss`,
 	});
 
