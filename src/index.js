@@ -37,10 +37,10 @@ app.get('/feed/:output.rss', (req, res) => {
 					{
 						'enclosure': {
 							_attr: {
-								url: entry.data
-							}
-						}
-					}
+								url: entry.data,
+							},
+						},
+					},
 				],
 			});
 		}
