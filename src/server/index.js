@@ -71,7 +71,7 @@ app.get('/guid/:guid', (req, res) => {
 	res.redirect('/');
 });
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../public'));
 
 app.listen(PORT, () => {
 	console.log(`Listening on port ${PORT}`);
