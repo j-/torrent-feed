@@ -1,13 +1,14 @@
 const database = require('./database');
+const feeds = require('./feeds');
 const uuid = require('node-uuid');
-const RSS = require('rss');
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const app = express();
 const key = () => uuid.v4();
 
 const PORT = process.env.PORT || 3000;
-const HOST = `http://localhost:${PORT}`;
+process.env.PORT = PORT;
 
 database.initialize();
 
@@ -16,44 +17,7 @@ process.on('exit', () => {
 	database.destroy();
 });
 
-app.get('/feed/:output.rss', (req, res) => {
-	var output = req.params.output;
-	var feed = new RSS({
-		title: 'torrent-feed',
-		description: 'Feed of torrents',
-		site_url: `${HOST}/`,
-		feed_url: `${HOST}/feed/${output}.rss`,
-		generator: `${HOST}/`,
-	});
-
-	database.getAll(output).then((entries) => {
-		var date;
-		for (var entry of entries) {
-			date = new Date(entry.created_date).toISOString();
-			feed.item({
-				title: `${date} (${entry.entry_id})`,
-				author: 'torrent-feed',
-				url: `${HOST}/guid/${entry.entry_id}`,
-				date: entry.created_date,
-				custom_elements: [
-					{
-						'enclosure': {
-							_attr: {
-								url: entry.data,
-							},
-						},
-					},
-				],
-			});
-		}
-
-		var xml = feed.xml({
-			indent: '\t',
-		});
-		res.type('application/xml');
-		res.send(xml);
-	});
-});
+app.use('/feed', feeds);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
