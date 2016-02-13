@@ -17,7 +17,7 @@ const torrents = files
 		const promise = new Promise((resolve, reject) => {
 			const reader = new FileReader();
 			reader.addEventListener('load', (e) => resolve(e.target.result));
-			reader.readAsBinaryString(file);
+			reader.readAsArrayBuffer(file);
 		});
 		return Rx.Observable.fromPromise(promise);
 	})
