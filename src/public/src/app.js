@@ -24,22 +24,23 @@ const torrents = files
 	.map((str) => new Buffer(str))
 	.map((buffer) => parseTorrent(buffer));
 
-torrents.forEach((torrent) => {
-	console.log('Torrent', torrent);
-	// uploadTorrent(torrent);
-});
+torrents
+	.map((torrent) => parseTorrent.toMagnetURI(torrent))
+	.forEach((uri) => magnetURIs.onNext(uri));
+
+const magnetURIs = new Rx.Subject();
+
+magnetURIs.forEach(uploadMagnetURI);
 
 function getUploadURL() {
 	return '/upload/7e710896-3899-49bb-bd97-c46833fdddcf';
 }
 
-function uploadTorrent (torrent) {
-	var uri = magnetURI.encode({
-		xt: torrent.xt,
-		tr: torrent.tr,
-	});
+function uploadMagnetURI (uri) {
+	console.info('Upload URI', uri);
 	var req = new XMLHttpRequest();
 	req.open('POST', getUploadURL());
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('data=' + encodeURIComponent(uri));
+	return req;
 }
