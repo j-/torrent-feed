@@ -26,7 +26,7 @@ const torrents = files
 
 torrents.forEach((torrent) => {
 	console.log('Torrent', torrent);
-	uploadTorrent(torrent);
+	// uploadTorrent(torrent);
 });
 
 function getUploadURL() {
