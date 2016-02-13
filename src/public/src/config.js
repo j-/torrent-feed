@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "src/public/src",
+  baseURL: "src",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -9,8 +9,8 @@ System.config({
     ]
   },
   paths: {
-    "github:*": "lib/github/*",
-    "npm:*": "lib/npm/*"
+    "github:*": "/lib/github/*",
+    "npm:*": "/lib/npm/*"
   },
 
   map: {
