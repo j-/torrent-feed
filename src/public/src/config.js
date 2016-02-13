@@ -20,6 +20,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "magnet-uri": "npm:magnet-uri@5.1.3",
     "parse-torrent": "npm:parse-torrent@5.7.0",
+    "rx": "npm:rx@4.0.7",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -336,6 +337,9 @@ System.config({
     "npm:rusha@0.8.3": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:rx@4.0.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:sha.js@2.4.4": {
